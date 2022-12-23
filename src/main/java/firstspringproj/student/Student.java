@@ -1,9 +1,6 @@
 package firstspringproj.student;
 
 import java.time.LocalDate;
-import java.time.Period;
-
-import org.springframework.cglib.core.Local;
 
 public class Student {
     private Long id;
