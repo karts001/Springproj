@@ -1,7 +1,5 @@
 package firstspringproj.springproj.student;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +21,8 @@ public class StudentService {
 		return studentRepository.findAll();
 		
 	}
+
+    public void addNewStudent(Student student) {
+		System.out.println(student);
+    }
 }
