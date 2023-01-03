@@ -1,6 +1,7 @@
 package firstspringproj.springproj.student;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,23 @@ public class StudentService {
 		}
 		studentRepository.deleteById(studentId);
 	}
-	
+
+    public void updateStudent(Long studentId,
+	String name,
+	String email) {
+
+		Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
+			"Student with ID " + studentId + " does not exist" 
+		));
+		
+		if (name != null && name.length() > 0 && !Objects.equals(student.getName(), name)) {
+			student.setName(name);
+		}
+		
+		if (email != null && email.length() > 0 && !Objects.equals(student.getEmail(), email)) {
+			student.setEmail(email);
+		}
+		studentRepository.save(student);
+    }
+
 }
