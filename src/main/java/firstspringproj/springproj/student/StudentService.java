@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -20,7 +21,7 @@ public class StudentService {
 
 	public List<Student> getStudents() {
 		
-		return studentRepository.findAll();
+		return studentRepository.findAll(Sort.by(Sort.Direction.ASC,"id"));
 		
 	}
 
@@ -57,6 +58,7 @@ public class StudentService {
 		if (email != null && email.length() > 0 && !Objects.equals(student.getEmail(), email)) {
 			student.setEmail(email);
 		}
+
 		studentRepository.save(student);
     }
 
