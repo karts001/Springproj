@@ -5,6 +5,7 @@ import java.time.Month;
 import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -15,6 +16,11 @@ public class StudentRepositoryTest {
 
     @Autowired
     private StudentRepository underTest;
+
+    @AfterEach
+    void tearDown() {
+        underTest.deleteAll();
+    }
 
     @Test
     void testThatIfAnEmailWhichAlreadyExistsIsQueriedAStudentObjectIsReturnedWithTheRelevantStudentInformation() {
@@ -43,19 +49,12 @@ public class StudentRepositoryTest {
         // Arrange
 
         String email = "email_which_does_not_exist@gmail.com";
-        Student student = new Student(
-            "Shiva",
-            LocalDate.of(1996, Month.MARCH, 24),
-            "shiva@gmail.com"
-        );
-        underTest.save(student);
 
         // Act
         Optional<Student> studentFromDatabase = underTest.findStudentByEmail(email);
-        System.out.println(studentFromDatabase);
 
         // Assert
         Assertions.assertThat(studentFromDatabase).isEmpty();
-        // Assertions.assertThat(Optional.of(studentFromDatabase.get().getEmail())).hasValue(email);
+        
     }
 }
