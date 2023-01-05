@@ -17,7 +17,7 @@ public class StudentRepositoryTest {
     private StudentRepository underTest;
 
     @Test
-    void itShouldCheckIfStudentEmailAlreadyExists() {
+    void testThatIfAnEmailWhichAlreadyExistsIsQueriedAStudentObjectIsReturnedWithTheRelevantStudentInformation() {
         // Arrange
 
         String email = "shiva@gmail.com";
@@ -36,5 +36,26 @@ public class StudentRepositoryTest {
         // Assert
         Assertions.assertThat(studentFromDatabase).isNotEmpty();
         Assertions.assertThat(Optional.of(studentFromDatabase.get().getEmail())).hasValue(email);
+    }
+
+    @Test
+    void testThatIfAnEmailWhichDoesNotExistIsQueriedSomethingHappens() {
+        // Arrange
+
+        String email = "email_which_does_not_exist@gmail.com";
+        Student student = new Student(
+            "Shiva",
+            LocalDate.of(1996, Month.MARCH, 24),
+            "shiva@gmail.com"
+        );
+        underTest.save(student);
+
+        // Act
+        Optional<Student> studentFromDatabase = underTest.findStudentByEmail(email);
+        System.out.println(studentFromDatabase);
+
+        // Assert
+        Assertions.assertThat(studentFromDatabase).isEmpty();
+        // Assertions.assertThat(Optional.of(studentFromDatabase.get().getEmail())).hasValue(email);
     }
 }
