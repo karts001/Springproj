@@ -26,9 +26,10 @@ public class StudentService {
 	}
 
     public void addNewStudent(Student student) {
-		Optional<Student> StudentOptional = studentRepository.findStudentByEmail(student.getEmail());
-
-		if (StudentOptional.isPresent()){
+		Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+		boolean studentEmailAlreadyExists = studentOptional.isPresent();
+		 
+		if (studentEmailAlreadyExists){
 			throw new IllegalStateException("Email already being used");
 		};
 
