@@ -125,8 +125,51 @@ public class StudentServiceTest {
     }    
 
     @Test
-    @Disabled
-    void testUpdateStudent() {
+    void testWhenAValidIdIsSuppliedTheStudentDataIsUpdated() {
+        // Arrange
+        Student student = new Student(
+            "Shiva",
+            LocalDate.of(1996, Month.MARCH, 24),
+            "shiva@gmail.com"
+        );
+
+        String newUserName = "Test Name";
+        String newUserEmail = null;
+        
+        // Act
+        when(studentRepository.findById(student.getId())).thenReturn(Optional.of(student));
+        underTest.updateStudent(student.getId(), newUserName, newUserEmail);
+        
+        // Assert
+        verify(studentRepository).findById(student.getId());
+        verify(studentRepository).save(student);
+        Assertions.assertThat(student.getName()).isEqualTo(newUserName);
+
+    }
+
+    @Test
+    void testWhenAValidIdIsSuppliedButUpdatedValuesAreTheSameAsTheOriginalValues() {
+        // Arrange
+        String originalName = "Shiva";
+        String originalEmail = "shiva@gmail.com";
+
+        Student student = new Student(
+            originalName,
+            LocalDate.of(1996, Month.MARCH, 24),
+            originalEmail
+        );
+
+        String newUserName = originalName;
+        String newUserEmail = originalEmail;
+        
+        // Act
+        when(studentRepository.findById(student.getId())).thenReturn(Optional.of(student));
+        underTest.updateStudent(student.getId(), newUserName, newUserEmail);
+        
+        // Assert
+        verify(studentRepository).findById(student.getId());
+        verify(studentRepository).save(student);
+        Assertions.assertThat(student.getName()).isEqualTo(originalName);
 
     }
 }
