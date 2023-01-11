@@ -125,7 +125,7 @@ public class StudentServiceTest {
     }    
 
     @Test
-    void testWhenAValidIdIsSuppliedTheStudentDataIsUpdated() {
+    void testWhenAValidIdIsSuppliedAndANewNameIsProvidedTheStudentNameIsUpdated() {
         // Arrange
         Student student = new Student(
             "Shiva",
@@ -148,6 +148,29 @@ public class StudentServiceTest {
     }
 
     @Test
+    void testWhenAValidIdIsSuppliedAndANewEmailIsProvidedTheStudentEmailIsUpdated() {
+        // Arrange
+        Student student = new Student(
+            "Shiva",
+            LocalDate.of(1996, Month.MARCH, 24),
+            "shiva@gmail.com"
+        );
+
+        String newStudentName = null;
+        String newStudentEmail = "test@gmail.com";
+        
+        // Act
+        when(studentRepository.findById(student.getId())).thenReturn(Optional.of(student));
+        underTest.updateStudent(student.getId(), newStudentName, newStudentEmail);
+        
+        // Assert
+        verify(studentRepository).findById(student.getId());
+        verify(studentRepository).save(student);
+        Assertions.assertThat(student.getEmail()).isEqualTo(newStudentEmail);
+
+    }
+
+    @Test
     void testWhenAValidIdIsSuppliedButUpdatedValuesAreTheSameAsTheOriginalValues() {
         // Arrange
         String originalName = "Shiva";
@@ -162,7 +185,7 @@ public class StudentServiceTest {
         String newUserName = originalName;
         String newUserEmail = originalEmail;
         
-        // Act
+        // Act  
         when(studentRepository.findById(student.getId())).thenReturn(Optional.of(student));
         underTest.updateStudent(student.getId(), newUserName, newUserEmail);
         
@@ -170,6 +193,59 @@ public class StudentServiceTest {
         verify(studentRepository).findById(student.getId());
         verify(studentRepository).save(student);
         Assertions.assertThat(student.getName()).isEqualTo(originalName);
+
+    }
+
+    @Test
+    void testWhenAValidIdIsSuppliedAndANewEmailAndNameIsProvidedTheStudentEmailAndNameAreUpdated() {
+        // Arrange
+        Student student = new Student(
+            "Shiva",
+            LocalDate.of(1996, Month.MARCH, 24),
+            "shiva@gmail.com"
+        );
+
+        String newStudentName = "test name";
+        String newStudentEmail = "test@gmail.com";
+        
+        // Act
+        when(studentRepository.findById(student.getId())).thenReturn(Optional.of(student));
+        underTest.updateStudent(student.getId(), newStudentName, newStudentEmail);
+        
+        // Assert
+        verify(studentRepository).findById(student.getId());
+        verify(studentRepository).save(student);
+        Assertions.assertThat(student.getEmail()).isEqualTo(newStudentEmail);
+        Assertions.assertThat(student.getName()).isEqualTo(newStudentName);
+
+    }
+
+    @Test
+    void testThrowsAnIllegalStateExceptionWhenAnInvalidIDIsSupplied() {
+        // Arrange
+        String originalName = "Shiva";
+        String originalEmail = "shiva@gmail.com";
+
+        Student student = new Student(
+            originalName,
+            LocalDate.of(1996, Month.MARCH, 24),
+            originalEmail
+        );
+        student.setId(1L);
+
+        String newName = originalName;
+        String newEmail = originalEmail;
+        
+        
+        // Act
+        BDDMockito.given(studentRepository.findById(student.getId())).willReturn(Optional.ofNullable(null));
+        
+        // Assert
+        Assertions.assertThatThrownBy(()->underTest.updateStudent(student.getId(), newName, newEmail))
+        .isInstanceOf(IllegalStateException.class)
+        .hasMessageContaining("Student with ID " + student.getId() + " does not exist");
+
+        verify(studentRepository, Mockito.never()).save(any());
 
     }
 }
