@@ -45,7 +45,9 @@ public class StudentServiceTest {
         Student student = new Student(
             "Shiva",
             LocalDate.of(1996, Month.MARCH, 24),
-            "shiva@gmail.com"
+            "shiva@gmail.com",
+            "Male",
+            new String[] {"Maths", "Physics", "Chemistry"}
         );
 
         // Act
@@ -66,7 +68,9 @@ public class StudentServiceTest {
         Student student = new Student(
             "Shiva",
             LocalDate.of(1996, Month.MARCH, 24),
-            "shiva@gmail.com"
+            "shiva@gmail.com",
+            "Male",
+            new String[] {"Maths", "Physics", "Chemistry"}
         );
 
         // Act
@@ -86,7 +90,9 @@ public class StudentServiceTest {
         Student student = new Student(
             "Shiva",
             LocalDate.of(1996, Month.MARCH, 24),
-            "shiva@gmail.com"
+            "shiva@gmail.com",
+            "Male",
+            new String[] {"Maths", "Physics", "Chemistry"}
         );
         
 
@@ -109,7 +115,9 @@ public class StudentServiceTest {
         Student student = new Student(
             "Shiva",
             LocalDate.of(1996, Month.MARCH, 24),
-            "shiva@gmail.com"
+            "shiva@gmail.com",
+            "Male",
+            new String[] {"Maths", "Physics", "Chemistry"}
         );
         
 
@@ -127,7 +135,9 @@ public class StudentServiceTest {
         Student student = new Student(
             "Shiva",
             LocalDate.of(1996, Month.MARCH, 24),
-            "shiva@gmail.com"
+            "shiva@gmail.com",
+            "Male",
+            new String[] {"Maths", "Physics", "Chemistry"}
         );
 
         String newUserName = "Test Name";
@@ -150,7 +160,9 @@ public class StudentServiceTest {
         Student student = new Student(
             "Shiva",
             LocalDate.of(1996, Month.MARCH, 24),
-            "shiva@gmail.com"
+            "shiva@gmail.com",
+            "Male",
+            new String[] {"Maths", "Physics", "Chemistry"}
         );
 
         String newStudentName = null;
@@ -176,7 +188,9 @@ public class StudentServiceTest {
         Student student = new Student(
             originalName,
             LocalDate.of(1996, Month.MARCH, 24),
-            originalEmail
+            originalEmail,
+            "Male",
+            new String[] {"Maths", "Physics", "Chemistry"}
         );
 
         String newUserName = originalName;
@@ -199,7 +213,9 @@ public class StudentServiceTest {
         Student student = new Student(
             "Shiva",
             LocalDate.of(1996, Month.MARCH, 24),
-            "shiva@gmail.com"
+            "shiva@gmail.com",
+            "Male",
+            new String[] {"Maths", "Physics", "Chemistry"}
         );
 
         String newStudentName = "test name";
@@ -226,7 +242,9 @@ public class StudentServiceTest {
         Student student = new Student(
             originalName,
             LocalDate.of(1996, Month.MARCH, 24),
-            originalEmail
+            originalEmail,
+            "Male",
+            new String[] {"Maths", "Physics", "Chemistry"}
         );
         student.setId(1L);
 

@@ -30,7 +30,9 @@ public class StudentRepositoryTest {
         Student student = new Student(
             "Shiva",
             LocalDate.of(1996, Month.MARCH, 24),
-            email
+            email,
+            "Male",
+            new String[] {"Chemistry", "Maths", "Physics"}
         );
         underTest.save(student);
 

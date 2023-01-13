@@ -22,6 +22,13 @@ public class StudentService {
 		
 	}
 
+	public String[] getStudentsSubjects(Long studentId) {
+		Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
+			"Student with ID " + studentId + " does not exist" 
+		));
+		return student.getSubjects();
+	}
+
     public void addNewStudent(Student student) {
 		Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
 		boolean studentEmailAlreadyExists = studentOptional.isPresent();

@@ -25,18 +25,25 @@ public class Student {
     private String email;
     @Transient
     private Integer age;
+    private String gender;
+    private String[] subjects;
 
-    public Student(String name, LocalDate dob, String email) {
+
+    public Student(String name, LocalDate dob, String email, String gender, String[] subjects) {
         this.name = name;
         this.dob = dob;
         this.email = email;
+        this.gender = gender;
+        this.subjects = subjects;
     }
 
-    public Student(Long id, String name, LocalDate dob, String email) {
+    public Student(Long id, String name, LocalDate dob, String email, String gender, String[] subjects) {
         this.id = id;
         this.name = name;
         this.dob = dob;
         this.email = email;
+        this.gender = gender;
+        this.subjects = subjects;
     }
 
     public Student () {
@@ -83,10 +90,25 @@ public class Student {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "Student [id=" + id + ", name=" + name + ", dob=" + dob + ", email=" + email + ", age=" + age + "]";
+    public String getGender() {
+        return gender;
     }
 
-    
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String[] getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(String[] subjects) {
+        this.subjects = subjects;
+    }
+
+    @Override
+    public String toString() {
+        return "Student [id=" + id + ", name=" + name + ", dob=" + dob + ", email=" + email + ", age=" + age
+                + ", gender=" + gender + "]";
+    }
 }

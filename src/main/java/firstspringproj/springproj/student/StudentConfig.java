@@ -18,13 +18,19 @@ public class StudentConfig {
             Student shiva = new Student(
 				"Shiva",
 				LocalDate.of(1996, Month.MARCH, 24),
-				"shiva@gmail.com"
+				"shiva@gmail.com",
+                "Male",
+                new String[] {"Maths", "Chemistry", "Physics"} 
+                
 			);
 
             Student tabs = new Student(
 				"Tabs",
 				LocalDate.of(1997, Month.JUNE, 25),
-				"tabs@gmail.com"
+				"tabs@gmail.com",
+                "Female",
+                new String[] {"English", "Maths", "Photography"}
+                
 			);
 
         repository.saveAll(List.of(shiva, tabs));
