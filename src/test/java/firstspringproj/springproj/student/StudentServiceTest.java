@@ -9,6 +9,8 @@ import org.springframework.data.domain.Sort;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
@@ -47,7 +49,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            new String[] {"Maths", "Physics", "Chemistry"}
+            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
         );
 
         // Act
@@ -70,7 +72,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            new String[] {"Maths", "Physics", "Chemistry"}
+            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
         );
 
         // Act
@@ -92,7 +94,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            new String[] {"Maths", "Physics", "Chemistry"}
+            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
         );
         
 
@@ -117,7 +119,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            new String[] {"Maths", "Physics", "Chemistry"}
+            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"})
         );
         
 
@@ -137,7 +139,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            new String[] {"Maths", "Physics", "Chemistry"}
+            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
         );
 
         String newUserName = "Test Name";
@@ -162,7 +164,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            new String[] {"Maths", "Physics", "Chemistry"}
+            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
         );
 
         String newStudentName = null;
@@ -190,7 +192,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             originalEmail,
             "Male",
-            new String[] {"Maths", "Physics", "Chemistry"}
+            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
         );
 
         String newUserName = originalName;
@@ -215,7 +217,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            new String[] {"Maths", "Physics", "Chemistry"}
+            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
         );
 
         String newStudentName = "test name";
@@ -244,7 +246,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             originalEmail,
             "Male",
-            new String[] {"Maths", "Physics", "Chemistry"}
+            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
         );
         student.setId(1L);
 

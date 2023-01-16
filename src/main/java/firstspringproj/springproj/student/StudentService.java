@@ -5,11 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import firstspringproj.springproj.grades.Grades;
+import firstspringproj.springproj.grades.GradesRepository;
+
+
+
 
 @Service
 public class StudentService {
-
+	
 	private final StudentRepository studentRepository;
+	private GradesRepository gradesRepository;
 
 	@Autowired
 	public StudentService(StudentRepository studentRepository) {
@@ -22,7 +28,7 @@ public class StudentService {
 		
 	}
 
-	public String[] getStudentsSubjects(Long studentId) {
+	public List<String> getStudentsSubjects(Long studentId) {
 		Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
 			"Student with ID " + studentId + " does not exist" 
 		));

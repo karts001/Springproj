@@ -2,6 +2,7 @@ package firstspringproj.springproj.student;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Arrays;
 import java.util.List;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +21,7 @@ public class StudentConfig {
 				LocalDate.of(1996, Month.MARCH, 24),
 				"shiva@gmail.com",
                 "Male",
-                new String[] {"Maths", "Chemistry", "Physics"} 
+                Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
                 
 			);
 
@@ -29,7 +30,7 @@ public class StudentConfig {
 				LocalDate.of(1997, Month.JUNE, 25),
 				"tabs@gmail.com",
                 "Female",
-                new String[] {"English", "Maths", "Photography"}
+                Arrays.asList(new String[] {"English", "Maths", "Photography"})
                 
 			);
 

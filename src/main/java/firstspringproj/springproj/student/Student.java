@@ -2,6 +2,9 @@ package firstspringproj.springproj.student;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
+
+import firstspringproj.springproj.grades.Grades;
 import jakarta.persistence.*;
 
 @Entity
@@ -26,10 +29,12 @@ public class Student {
     @Transient
     private Integer age;
     private String gender;
-    private String[] subjects;
+    // @OneToMany(targetEntity = Grades.class, cascade = CascadeType.ALL)
+    // @JoinColumn(name="sg_fk",referencedColumnName = "id")
+    private List<String> subjects;
 
 
-    public Student(String name, LocalDate dob, String email, String gender, String[] subjects) {
+    public Student(String name, LocalDate dob, String email, String gender, List<String> subjects) {
         this.name = name;
         this.dob = dob;
         this.email = email;
@@ -37,7 +42,7 @@ public class Student {
         this.subjects = subjects;
     }
 
-    public Student(Long id, String name, LocalDate dob, String email, String gender, String[] subjects) {
+    public Student(Long id, String name, LocalDate dob, String email, String gender, List<String> subjects) {
         this.id = id;
         this.name = name;
         this.dob = dob;
@@ -98,11 +103,11 @@ public class Student {
         this.gender = gender;
     }
 
-    public String[] getSubjects() {
+    public List<String> getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(String[] subjects) {
+    public void setSubjects(List<String> subjects) {
         this.subjects = subjects;
     }
 
@@ -112,3 +117,4 @@ public class Student {
                 + ", gender=" + gender + "]";
     }
 }
+

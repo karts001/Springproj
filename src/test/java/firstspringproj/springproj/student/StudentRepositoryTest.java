@@ -2,6 +2,7 @@ package firstspringproj.springproj.student;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Arrays;
 import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
@@ -26,13 +27,14 @@ public class StudentRepositoryTest {
     void testThatIfAnEmailWhichAlreadyExistsIsQueriedAStudentObjectIsReturnedWithTheRelevantStudentInformation() {
         // Arrange
 
+        System.out.println(underTest.findAll());
         String email = "shiva@gmail.com";
         Student student = new Student(
             "Shiva",
             LocalDate.of(1996, Month.MARCH, 24),
             email,
             "Male",
-            new String[] {"Chemistry", "Maths", "Physics"}
+            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
         );
         underTest.save(student);
 
