@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.karts001.StudentManagementSystem.dto.SubjectRequestResponse;
 import com.karts001.StudentManagementSystem.models.Student;
 import com.karts001.StudentManagementSystem.services.StudentService;
 import com.karts001.StudentManagementSystem.services.SubjectsService;
@@ -49,7 +50,7 @@ public class StudentController {
     }
 
     @GetMapping(path = "getStudentSubjects/{studentId}")
-    public void getStudentSubjects (@PathVariable("studentId") Long studentId) {
-        subjectsService.getStudentSubjects(studentId);
+    public List<SubjectRequestResponse> getStudentSubjects (@PathVariable("studentId") Long studentId) {
+        return subjectsService.getStudentSubjects(studentId);
     }
 }

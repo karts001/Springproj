@@ -11,6 +11,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface SubjectsRepository extends JpaRepository<Subjects, Long> {
 
     @Query("SELECT new com.karts001.StudentManagementSystem.dto.SubjectRequestResponse(s.name, c.className) FROM Student s JOIN s.subjects c")
-    List<SubjectRequestResponse> getStudentSubjects(Long id);
+    List<SubjectRequestResponse> joinStudentNameAndSubjects(Long id);
     
 }

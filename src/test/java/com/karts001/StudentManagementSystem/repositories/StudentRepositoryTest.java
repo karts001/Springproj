@@ -87,7 +87,7 @@ public class StudentRepositoryTest {
 
 
         // Act
-        List<SubjectRequestResponse> studentSubjectFromDatabase = underTest2.getStudentSubjects(1L);
+        List<SubjectRequestResponse> studentSubjectFromDatabase = underTest2.joinStudentNameAndSubjects(1L);
         System.out.println(studentSubjectFromDatabase);
         // Assert
         Assertions.assertThat(studentSubjectFromDatabase).isNotEmpty();
@@ -114,7 +114,7 @@ public class StudentRepositoryTest {
 
 
         // Act
-        List<SubjectRequestResponse> studentSubjectFromDatabase = underTest2.getStudentSubjects(1L);
+        List<SubjectRequestResponse> studentSubjectFromDatabase = underTest2.joinStudentNameAndSubjects(1L);
         System.out.println(studentSubjectFromDatabase);
         // Assert
         Assertions.assertThat(studentSubjectFromDatabase).isNotEmpty();;
