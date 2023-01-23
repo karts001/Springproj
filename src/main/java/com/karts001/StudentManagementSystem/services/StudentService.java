@@ -1,23 +1,17 @@
-package firstspringproj.springproj.student;
+package com.karts001.StudentManagementSystem.services;
 
 import java.util.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import firstspringproj.springproj.grades.Grades;
-import firstspringproj.springproj.grades.GradesRepository;
-
-
+import com.karts001.StudentManagementSystem.models.Student;
+import com.karts001.StudentManagementSystem.repositories.StudentRepository;
 
 
 @Service
 public class StudentService {
 	
 	private final StudentRepository studentRepository;
-	private GradesRepository gradesRepository;
-
-	@Autowired
 	public StudentService(StudentRepository studentRepository) {
 		this.studentRepository = studentRepository;
 	}
@@ -26,13 +20,6 @@ public class StudentService {
 		
 		return studentRepository.findAll(Sort.by(Sort.Direction.ASC,"id"));
 		
-	}
-
-	public List<String> getStudentsSubjects(Long studentId) {
-		Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
-			"Student with ID " + studentId + " does not exist" 
-		));
-		return student.getSubjects();
 	}
 
     public void addNewStudent(Student student) {

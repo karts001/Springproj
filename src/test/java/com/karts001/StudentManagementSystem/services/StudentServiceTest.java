@@ -1,4 +1,4 @@
-package firstspringproj.springproj.student;
+package com.karts001.StudentManagementSystem.services;
 
 import org.mockito.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -7,10 +7,13 @@ import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
 
+import com.karts001.StudentManagementSystem.models.Student;
+import com.karts001.StudentManagementSystem.models.Subjects;
+import com.karts001.StudentManagementSystem.repositories.StudentRepository;
+
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
@@ -49,7 +52,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
+            Arrays.asList(new Subjects()) 
         );
 
         // Act
@@ -72,7 +75,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
+            Arrays.asList(new Subjects()) 
         );
 
         // Act
@@ -94,7 +97,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
+            Arrays.asList(new Subjects()) 
         );
         
 
@@ -119,7 +122,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"})
+            Arrays.asList(new Subjects())
         );
         
 
@@ -139,7 +142,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
+            Arrays.asList(new Subjects()) 
         );
 
         String newUserName = "Test Name";
@@ -164,7 +167,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
+            Arrays.asList(new Subjects()) 
         );
 
         String newStudentName = null;
@@ -192,7 +195,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             originalEmail,
             "Male",
-            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
+            Arrays.asList(new Subjects()) 
         );
 
         String newUserName = originalName;
@@ -217,7 +220,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             "shiva@gmail.com",
             "Male",
-            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
+            Arrays.asList(new Subjects()) 
         );
 
         String newStudentName = "test name";
@@ -246,7 +249,7 @@ public class StudentServiceTest {
             LocalDate.of(1996, Month.MARCH, 24),
             originalEmail,
             "Male",
-            Arrays.asList(new String[] {"Maths", "Physics", "Chemistry"}) 
+            Arrays.asList(new Subjects()) 
         );
         student.setId(1L);
 

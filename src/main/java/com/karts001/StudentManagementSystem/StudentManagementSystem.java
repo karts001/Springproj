@@ -1,13 +1,12 @@
-package firstspringproj.springproj;
+package com.karts001.StudentManagementSystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 @SpringBootApplication
-public class SpringprojApplication {
+public class StudentManagementSystem {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringprojApplication.class, args);
+		SpringApplication.run(StudentManagementSystem.class, args);
 	}
-} 
+}
